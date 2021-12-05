@@ -4,13 +4,15 @@ import os
 from executive.actions.add import AddAction
 sys.path.append(os.getcwd())
 from executive.actions.assign import AssignAction
-from executive.actions.models import Action, AssignedAction
+from executive.actions.models import Action, AssignedAction, Project
 from unittest import mock, TestCase
 import datetime
 
 class AssignActionTest(TestCase):
     @mock.patch('executive.actions.add.input', create=True)
     def setUp(self, mocked_input):
+        p = Project(name="testing")
+        p.save()
         mocked_input.side_effect = ['test_project', '2022-01-1', '1', '']
         a = AddAction()
         a.run()
@@ -24,6 +26,7 @@ class AssignActionTest(TestCase):
     
 
     def tearDown(self):
+        Project.delete_by_id(len(Project))
         Action.delete_by_id(len(Action))
         AssignedAction.delete_by_id(len(AssignedAction))
         
