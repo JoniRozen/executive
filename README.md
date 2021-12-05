@@ -23,15 +23,6 @@ Run the installation script:
 
 `python3 executive/main.py`
 
-**Usage**
-=========
-
-To run the tests the path to the executive folder needs to be added to the Python path:
-for Linux/Mac:
-`export PYTHONPATH=/path/to/executive`
-
-for Windows:
-`set PYTHONPATH=/path/to/executive`
 
 **Backlog**
 =========
