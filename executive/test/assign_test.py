@@ -14,7 +14,6 @@ class AssignActionTest(TestCase):
         mocked_input.side_effect = ['test_project', '2022-01-1', '1', '']
         a = AddAction()
         a.run()
-        a = AddAction()
 
     @mock.patch('executive.actions.add.input', create=True)
     def test_assignment(self, mocked_input):
