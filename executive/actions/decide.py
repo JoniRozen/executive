@@ -1,10 +1,9 @@
 """The script of greatness!"""
 
-from executive.actions.models import Action, ScheduledAction, Project
-from executive.tools.cron import CronHandler
+from actions.models import Action, ScheduledAction, Project
+from tools.cron import CronHandler
 from datetime import datetime, date, timedelta
 import pytz
-import re
 
 class DecisionMaker(object):
     def run(self):
@@ -21,7 +20,7 @@ class DecisionMaker(object):
 
     def __newprojectaction(self):        
         return self._new(
-            "Add a first project using 'ex addproject (name) [parent id]'",
+            "Add a first project!",
             date.today())
 
     def __fillprojectaction(self, project):

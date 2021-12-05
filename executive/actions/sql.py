@@ -1,10 +1,12 @@
 from sys import argv
 from django.db import connection, transaction
 import traceback
+from django.conf import settings
+import os
 
 class RawSQL(object):
     def run(self, query):
-        with transaction.commit_manually():
+        with transaction.atomic():
             try:
                 cursor = connection.cursor()
                 cursor.execute(query)
@@ -13,12 +15,11 @@ class RawSQL(object):
                 else:
                     if query.startswith("delete"):
                         if not "where" in query:
-                            confirm = raw_input("Really delete everything?\nIf so, please write 'yes sir, delete everything.'\n>")
+                            confirm = input("Really delete everything?\nIf so, please write 'yes sir, delete everything.'\n>")
                             if confirm != "yes sir, delete everything.":
                                 raise Exception("aborted")
                             
                 print("query affected {} rows".format(cursor.rowcount))
-                connection.commit()
             except Exception as e:
                 traceback.print_exc()
 

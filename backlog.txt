@@ -1,0 +1,23 @@
+In summary, these are your tasks:
+
+1. Refactor the existing application according to your vision, so it can be used as a Proof of Concept. It needs to contain the updates you think are necessary to building high-quality, future proof applications.
+2. Implement the improvements. Choose anything you think you can deliver most value and are most crucial in this stage:
+    a. Adding new functionality
+    b. Create automated tests or a test strategy
+    c. Help them move to the cloud  
+    d. Invest in a solid CI/CD process
+3. Create a vision or roadmap for future improvements and new functionality. After showing the board what you have done, advise them on how to proceed. What would you do next? Be sure to include at least one improvement that is not on the backlog yet.
+
+Backlog
+
+The team created a backlog with improvements and missing features they think are necessary. You can choose to pick up work from this list. It is too much work for one day, you’re not expected to do all of it. If you think there are more urgent changes necessary you can also choose to work on those.
+- The code was written in Python 2, which is end-of life. Convert it to Python 3. -> Done?
+- It's only a static database. A service that preloads all the data into RAM would be faster.
+- It would be nice if, when asked for a project, there is already a list shown of projects -> Done
+- If there are no actions, there is an error. It should congratulate the user instead.
+- When adding a task a deadline before today shouldn't be accepted. -> Done
+- When adding a task the date format should be clarified in the prompt. -> Done
+- Using sql.py the error message could be cleaner if the input isn't valid SQL.
+- add.py works with an interactive prompt, could also support a list of arguments from the command line. Could use Python argparse for this. -> Done
+- A command line tool is a bit scary for most users. A GUI would be more friendly
+- The installation is a bit cumbersome, and sometimes there are problems because of differences in environments. Write an installation script. Docker would be even better -> Done

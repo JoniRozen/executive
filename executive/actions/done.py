@@ -1,16 +1,15 @@
 from sys import argv
 from executive.actions.models import Action, ScheduledAction
-from datetime import datetime
+from datetime import date
 from pytz import timezone
 
 class CompleteAction(object):
-    def run(self):
-        options = argv[1:]
-        if options[0] == "-s":
-            action = ScheduledAction[options[1]]
-            action.lastcompleted = datetime.now(timezone('Europe/Amsterdam'))
+    def run(self, action_id, scheduled):
+        if scheduled:
+            action = ScheduledAction[action_id]
+            action.lastcompleted = date.today()
         else:
-            action = Action[options[0]]
+            action = Action[action_id]
             action.completed = True
         action.save()
         self._reward(action)
@@ -20,5 +19,3 @@ class CompleteAction(object):
         print("Set action '{action.name}' to completed.".format(**locals()))
         print("call decide.py for your next action")
 
-if __name__ == "__main__":
-    CompleteAction().run()

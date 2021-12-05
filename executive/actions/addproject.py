@@ -1,5 +1,5 @@
 from sys import argv
-from executive.actions.models import Project
+from actions.models import Project
 if __name__ == "__main__":
     arguments = argv[1:]
     p = Project(name = arguments[0])
