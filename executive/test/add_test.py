@@ -22,7 +22,7 @@ class AddActionTest(TestCase):
     
     @mock.patch('executive.actions.add.input', create=True)
     def test_incorrect_first_instance(self, mocked_input):
-        mocked_input.side_effect = ['test_project', '2020-01-1','2022-01-1', '1', '']
+        mocked_input.side_effect = ['test_project', '2020-01-1', ' ', '2022-01-1', '1', '']
         a = AddAction()
         a.run()
         self.assertEqual(a.options, {'name': 'test_project', 'deadline': datetime.datetime(2022, 1, 1, 0, 0), 

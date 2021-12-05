@@ -3,7 +3,7 @@ from datetime import date, datetime
 
 class AddAction(object):
     options = [
-        'name', 'deadline', 'project_id', 'context']
+        'name', 'deadline', 'project', 'context']
     def run(self):
         self.options = self._getoptions()
         self._add(self.options)
