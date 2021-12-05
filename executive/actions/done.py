@@ -1,13 +1,13 @@
 from sys import argv
 from executive.actions.models import Action, ScheduledAction
-from datetime import date
+from datetime import datetime
 from pytz import timezone
 
 class CompleteAction(object):
     def run(self, action_id, scheduled):
         if scheduled:
             action = ScheduledAction[action_id]
-            action.lastcompleted = date.today()
+            action.lastcompleted = datetime.now(timezone('Europe/Amsterdam'))
         else:
             action = Action[action_id]
             action.completed = True

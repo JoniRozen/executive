@@ -29,7 +29,7 @@ class DecisionMaker(object):
         if lastdone:
             lastcompletednotice += "\nlast completed action: {lastdone[0].name} at {lastdone[0].deadline}".format(**locals())
         return self._new(
-            "Add an action to project {project.id}: {project.name}".format(**locals()) + lastcompletednotice,
+            "Add an action to project: {project.id}, {project.name}".format(**locals()) + lastcompletednotice,
             date.today(),
             project = project
             )        
@@ -72,7 +72,7 @@ class DecisionMaker(object):
 
     def _empty_project(self):
         for p in Project.select():
-            if len(Action.select().where(Action.project == p.id, Action.completed == False)) == 0:
+            if len(Action.select().where(Action.project_id == p.id, Action.completed == False)) == 0:
                 if len(Project.select().where(Project.parent == p.id)) == 0:
                     return p
         return None

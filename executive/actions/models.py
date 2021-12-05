@@ -13,7 +13,7 @@ class Project(BaseModel):
 class Action(BaseModel):
     name = orm.CharField()
     deadline = orm.DateField()
-    project_id = orm.ForeignKeyField(Project, null=True)
+    project = orm.ForeignKeyField(Project, null=True)
     completed = orm.BooleanField(default = False)
     context = orm.CharField(null = True)
 

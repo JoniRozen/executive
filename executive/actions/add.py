@@ -16,7 +16,9 @@ class AddAction(object):
                 curr = datetime.strptime(input('Specify deadline in the following format: YYYY-MM-DD \n >'), "%Y-%m-%d")
                 while curr.date() < today:
                     print('The deadline should cannot be a day before today!')
-                    curr = datetime.strptime(input('Specify deadline in the following format: YYYY-MM-DD'), "%Y-%m-%d")
+                    input("Press Enter to continue...")
+                    curr = datetime.strptime(input('Specify deadline in the following format: YYYY-MM-DD \n >'), "%Y-%m-%d")
+                    
                 options[option] = curr
             elif option == 'time':
                 options[option] = today

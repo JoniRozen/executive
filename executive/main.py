@@ -1,8 +1,7 @@
 import sys
 import os
-
-from executive.actions.models import Action
 sys.path.append(os.getcwd())
+from executive.actions.models import Action
 from peewee import SqliteDatabase
 import pyfiglet
 from actions.decide import DecisionMaker
@@ -23,12 +22,11 @@ def main():
     print(ascii_banner)
     print("Welcome to Executive, GBNs Productivity App!\n")
     while True:
-        input("Press Enter to continue...")
+        input("Press Enter to continue... \n")
         print("The options are: \n" +
                 "1. Decide what to do next\n" +
                 "2. Add a new project to the list\n" +
                 "3. Add new a action to one of the projects\n" +
-                "4. List all actions and their ids\n"
                 "4. Mark action as done\n" +
                 "5. Assign action to a person\n" +
                 "6. Quit\n")
@@ -50,27 +48,26 @@ def main():
         elif option == '3':
             print("The available projects are:")
             for p in Project:
-                print("{p.id}, {p.name}")
+                print("{}, {}".format(p.id, p.name))
             s = input("Is the action scheduled [Y/N]?")
             if s.lower() == 'y':
                 ScheduleAction().run()
             else:
                 AddAction().run()
         elif option == '4':
-            if len(Action) > 0:
-                for p in Action:
-                    print("{a.id}, {a.name}")
-            else:
-                print("congratulations, There are no actions left!")
-        elif option == '5':
+            for a in Action:
+                print("{}, {}".format(a.id, a.name))
             action_id = input("Please input the ID of the completed action: \n >")
             scheduled = input("Is the action scheduled [Y/N]?")
             done.run(action_id, scheduled=(scheduled.lower() == 'y'))
-        elif option == '6':
+        elif option == '5':
+            for a in Action:
+                if not a.completed:
+                    print("{}, {}".format(a.id, a.name))
             assign.run()   
-        elif option == '7':
+        elif option == '6':
             break
         else:
-            print("Please input a from 1-7 number")
-    input("Press Enter to continue...")
+            print("Please input a from 1-6 number")
+    input("Press Enter to continue... \n")
 main()
