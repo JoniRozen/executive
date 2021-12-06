@@ -72,7 +72,7 @@ class DecisionMaker(object):
 
     def _empty_project(self):
         for p in Project.select():
-            if len(Action.select().where(Action.project_id == p.id, Action.completed == False)) == 0:
+            if len(Action.select().where(Action.project == p.id, Action.completed == False)) == 0:
                 if len(Project.select().where(Project.parent == p.id)) == 0:
                     return p
         return None

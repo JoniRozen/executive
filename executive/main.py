@@ -29,7 +29,8 @@ def main():
                 "3. Add new a action to one of the projects\n" +
                 "4. Mark action as done\n" +
                 "5. Assign action to a person\n" +
-                "6. Quit\n")
+                "6. View the actions assigned to a person\n" +
+                "7. Quit\n")
         option = input("Pick an option: ")
         if option == '1':
             dm.run()
@@ -66,8 +67,14 @@ def main():
                     print("{}, {}".format(a.id, a.name))
             assign.run()   
         elif option == '6':
+            name = input("Whose actions do you want to view? \n >")
+            assign._get_assigned_to(name)
+        elif option == '7':
             break
         else:
             print("Please input a from 1-6 number")
-    input("Press Enter to continue... \n")
+    input("Thank you for using Executive!\n")
+
 main()
+
+
