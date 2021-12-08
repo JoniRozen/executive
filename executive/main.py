@@ -22,6 +22,7 @@ def main():
     print(ascii_banner)
     print("Welcome to Executive, GBNs Productivity App!\n")
     while True:
+        
         input("Press Enter to continue... \n")
         print("The options are: \n" +
                 "1. Decide what to do next\n" +
